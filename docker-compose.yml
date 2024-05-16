@@ -1,0 +1,34 @@
+services:
+  backend:
+    container_name: compose-kpd-back-container
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    image: kpd-back-optimal-image
+    ports:
+      - 4000:3000
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+
+  frontend:
+    container_name: compose-kpd-front-container
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    image: kpd-front-optimal-image
+    ports:
+      - 3005:80
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    env_file:
+      - .env
+  
+  adminer:
+    container_name: adminer
+    image: adminer
+    ports:
+      - 8081:8080
