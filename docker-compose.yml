@@ -5,6 +5,8 @@ services:
       context: backend
       dockerfile: Dockerfile
     image: kpd-back-optimal-image
+    networks:
+      - backend
     ports:
       - 4000:3000
     env_file:
@@ -18,12 +20,16 @@ services:
       context: frontend
       dockerfile: Dockerfile
     image: kpd-front-optimal-image
+    networks:
+      - frontend
     ports:
       - 3005:80
 
   postgres:
     container_name: postgres
     image: postgres
+    networks:
+      - backend
     volumes:
       - postgres_data:/data/postgres
     env_file:
@@ -32,8 +38,16 @@ services:
   adminer:
     container_name: adminer
     image: adminer
+    networks:
+      - backend
     ports:
       - 8081:8080
+    depends_on:
+      - postgres
+
+networks:
+  frontend:
+  backend:
 
 volumes:
   postgres_data:
