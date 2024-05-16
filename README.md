@@ -11,4 +11,4 @@ IP adress: 158.160.171.189
 
 #### Stack:
 
-![Stack](https://skillicons.dev/icons?i=vscode,git,github,ts,nodejs,nest,react,postgres,docker&perline=5)
+![Stack](https://skillicons.dev/icons?i=git,github,react,ts,nodejs,nest,postgres,docker&perline=4)
