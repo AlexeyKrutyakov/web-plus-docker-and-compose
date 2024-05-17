@@ -13,6 +13,7 @@ services:
       - .env
     depends_on:
       - postgres
+    restart: on-failure
 
   frontend:
     container_name: compose-kpd-front-container
@@ -24,6 +25,7 @@ services:
       - frontend
     ports:
       - 3005:80
+    restart: on-failure
 
   postgres:
     container_name: postgres
@@ -34,7 +36,8 @@ services:
       - postgres_data:/data/postgres
     env_file:
       - .env
-  
+    restart: always
+
   adminer:
     container_name: adminer
     image: adminer
@@ -44,6 +47,7 @@ services:
       - 8081:8080
     depends_on:
       - postgres
+    restart: always
 
 networks:
   frontend:
